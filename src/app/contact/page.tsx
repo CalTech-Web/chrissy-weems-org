@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import { Send, CheckCircle, Mic, Handshake, Sparkles } from "lucide-react";
 import { BlobShape, SparkleDecor } from "@/components/DecorativeShapes";
 import RevealSection from "@/components/RevealSection";
@@ -21,18 +22,31 @@ export default function ContactPage() {
         <SparkleDecor className="absolute top-20 right-[20%] w-4 h-4 text-gold/30 animate-sparkle" />
 
         <div className="relative max-w-7xl mx-auto px-6">
-          <RevealSection>
-            <p className="text-rose-gold font-medium mb-4 tracking-[0.2em] uppercase text-xs">
-              Contact
-            </p>
-            <h1 className="text-5xl md:text-7xl font-heading font-bold text-deep-plum leading-[1.1] mb-6">
-              Get in <span className="text-gradient">Touch</span>
-            </h1>
-            <p className="text-lg md:text-xl text-warm-gray/80 leading-[1.8] max-w-2xl">
-              Interested in speaking engagements, collaborations, or simply
-              want to connect? Send a message below.
-            </p>
-          </RevealSection>
+          <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+            <RevealSection>
+              <p className="text-rose-gold font-medium mb-4 tracking-[0.2em] uppercase text-xs">
+                Contact
+              </p>
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-deep-plum leading-[1.1] mb-6">
+                Get in <span className="text-gradient">Touch</span>
+              </h1>
+              <p className="text-lg md:text-xl text-warm-gray/80 leading-[1.8] max-w-2xl">
+                Interested in speaking engagements, collaborations, or simply
+                want to connect? Send a message below.
+              </p>
+            </RevealSection>
+            <RevealSection direction="right" delay={200} className="hidden md:block">
+              <div className="rounded-3xl overflow-hidden shadow-xl shadow-black/5">
+                <Image
+                  src="/chrissy-weems-small.jpg"
+                  alt="Chrissy Weems"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </RevealSection>
+          </div>
         </div>
       </section>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Tag, ArrowRight } from "lucide-react";
 import { BlobShape, SparkleDecor } from "@/components/DecorativeShapes";
@@ -22,6 +23,7 @@ const posts = [
     title: "TEDx Talk Features Origami Owl Co-Founder Chrissy Weems",
     category: "Entrepreneurship",
     date: "May 31, 2019",
+    image: "/blog-tedx.png",
     excerpt:
       "Chrissy Weems takes the TEDx stage to share the story of Origami Owl, the power of believing in young entrepreneurs, and how a $350 investment changed everything.",
   },
@@ -30,6 +32,7 @@ const posts = [
     title: "Owlette Spreads Sunshine To Pediatric Cancer Patients",
     category: "Community",
     date: "September 4, 2018",
+    image: "/blog-community.png",
     excerpt:
       "A young Owlette entrepreneur uses her platform to bring joy and comfort to pediatric cancer patients, embodying the spirit of Live Sparkly and giving back.",
   },
@@ -38,6 +41,7 @@ const posts = [
     title: "Origami Owl Takes A Stand Against Childhood Bullying",
     category: "Advocacy",
     date: "August 23, 2018",
+    image: "/blog-bullyproof.jpg",
     excerpt:
       "Origami Owl launches the I Am Bullyproof campaign, partnering with organizations to fight childhood bullying and empower young people to stand up for themselves.",
   },
@@ -46,6 +50,7 @@ const posts = [
     title: "How Entrepreneurs Can Help Reverse The Lonely Trend",
     category: "Entrepreneurship",
     date: "July 3, 2018",
+    image: "/chrissy-weems-small.jpg",
     excerpt:
       "Chrissy explores how entrepreneurship and community building can combat growing feelings of isolation, and why connection is at the heart of great businesses.",
   },
@@ -84,30 +89,43 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-6">
           {/* Featured post */}
           <RevealSection direction="scale" className="mb-10">
-            <article className="bg-gradient-to-br from-deep-plum to-plum-800 rounded-3xl p-10 md:p-14 text-white relative overflow-hidden group">
-              <BlobShape className="absolute -right-20 -top-20 w-60 h-60 text-plum-400/20 group-hover:scale-110 transition-transform duration-700" />
-              <div className="relative z-10">
-                <div className="flex flex-wrap items-center gap-4 mb-6">
-                  <span className="bg-gold/20 text-gold px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1.5">
-                    <Tag size={10} />
-                    {featured.category}
-                  </span>
-                  <span className="text-white/50 text-xs inline-flex items-center gap-1.5">
-                    <Calendar size={10} />
-                    {featured.date}
-                  </span>
+            <Link href={`/blog/${featured.slug}`}>
+              <article className="bg-gradient-to-br from-deep-plum to-plum-800 rounded-3xl text-white relative overflow-hidden group grid md:grid-cols-[1fr_0.8fr]">
+                <div className="p-10 md:p-14 relative z-10">
+                  <BlobShape className="absolute -right-20 -top-20 w-60 h-60 text-plum-400/20 group-hover:scale-110 transition-transform duration-700" />
+                  <div className="relative z-10">
+                    <div className="flex flex-wrap items-center gap-4 mb-6">
+                      <span className="bg-gold/20 text-gold px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1.5">
+                        <Tag size={10} />
+                        {featured.category}
+                      </span>
+                      <span className="text-white/50 text-xs inline-flex items-center gap-1.5">
+                        <Calendar size={10} />
+                        {featured.date}
+                      </span>
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-heading font-bold mb-4 leading-tight">
+                      {featured.title}
+                    </h2>
+                    <p className="text-white/70 max-w-xl leading-[1.8] text-lg">
+                      {featured.excerpt}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-gold font-medium mt-6 group-hover:gap-3 transition-all">
+                      Read More <ArrowRight size={14} />
+                    </span>
+                  </div>
                 </div>
-                <h2 className="text-2xl md:text-4xl font-heading font-bold mb-4 leading-tight">
-                  {featured.title}
-                </h2>
-                <p className="text-white/70 max-w-xl leading-[1.8] text-lg">
-                  {featured.excerpt}
-                </p>
-                <span className="inline-flex items-center gap-2 text-gold font-medium mt-6 group-hover:gap-3 transition-all">
-                  Read More <ArrowRight size={14} />
-                </span>
-              </div>
-            </article>
+                <div className="relative hidden md:block">
+                  <Image
+                    src={featured.image}
+                    alt={featured.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-deep-plum/80 to-transparent" />
+                </div>
+              </article>
+            </Link>
           </RevealSection>
 
           {/* Remaining posts */}
@@ -119,31 +137,43 @@ export default function BlogPage() {
 
               return (
                 <RevealSection key={post.slug} delay={i * 100}>
-                  <article
-                    className={`glass rounded-2xl p-7 hover:shadow-xl transition-all group border-t-4 ${borderClass} h-full`}
-                  >
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span
-                        className={`${badgeClass} px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1.5`}
-                      >
-                        <Tag size={10} />
-                        {post.category}
-                      </span>
-                      <span className="text-warm-gray text-xs inline-flex items-center gap-1.5">
-                        <Calendar size={10} />
-                        {post.date}
-                      </span>
-                    </div>
-                    <h2 className="text-lg font-heading font-bold text-deep-plum mb-3 leading-tight">
-                      {post.title}
-                    </h2>
-                    <p className="text-warm-gray text-sm leading-[1.7] mb-4">
-                      {post.excerpt}
-                    </p>
-                    <span className="text-rose-gold text-sm font-medium inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                      Read More <ArrowRight size={12} />
-                    </span>
-                  </article>
+                  <Link href={`/blog/${post.slug}`} className="block h-full">
+                    <article
+                      className={`glass rounded-2xl overflow-hidden hover:shadow-xl transition-all group border-t-4 ${borderClass} h-full flex flex-col`}
+                    >
+                      <div className="relative h-48 w-full">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="p-7 flex flex-col flex-1">
+                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                          <span
+                            className={`${badgeClass} px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1.5`}
+                          >
+                            <Tag size={10} />
+                            {post.category}
+                          </span>
+                          <span className="text-warm-gray text-xs inline-flex items-center gap-1.5">
+                            <Calendar size={10} />
+                            {post.date}
+                          </span>
+                        </div>
+                        <h2 className="text-lg font-heading font-bold text-deep-plum mb-3 leading-tight">
+                          {post.title}
+                        </h2>
+                        <p className="text-warm-gray text-sm leading-[1.7] mb-4 flex-1">
+                          {post.excerpt}
+                        </p>
+                        <span className="text-rose-gold text-sm font-medium inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                          Read More <ArrowRight size={12} />
+                        </span>
+                      </div>
+                    </article>
+                  </Link>
                 </RevealSection>
               );
             })}

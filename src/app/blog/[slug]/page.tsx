@@ -108,7 +108,7 @@ export default async function BlogPostPage({
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-deep-plum to-plum-800 py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-deep-plum to-plum-800 pt-28 pb-20 overflow-hidden">
         <SparkleDecor className="absolute top-16 right-[20%] w-4 h-4 text-gold/30 animate-sparkle" />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-rose-gold/10 rounded-full blur-[120px]" />
 
@@ -141,10 +141,10 @@ export default async function BlogPostPage({
       </section>
 
       {/* Featured Image */}
-      <section className="relative -mt-1 bg-white">
+      <section className="relative bg-white pt-12 pb-4">
         <div className="max-w-4xl mx-auto px-6">
           <RevealSection direction="scale">
-            <div className="relative -mt-8 rounded-2xl overflow-hidden shadow-xl shadow-black/10">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-black/10">
               <Image
                 src={post.image}
                 alt={post.title}

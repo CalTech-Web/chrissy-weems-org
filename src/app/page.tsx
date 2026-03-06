@@ -1,11 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart, Users, Sparkles, Award } from "lucide-react";
 import {
   BlobShape,
-  FloatingRing,
   SparkleDecor,
   WaveSeparator,
-  DiagonalCut,
 } from "@/components/DecorativeShapes";
 import RevealSection from "@/components/RevealSection";
 
@@ -52,14 +51,10 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream via-warm-white to-rose-100" />
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-soft-pink/30 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/10 rounded-full blur-[100px]" />
-        <BlobShape className="absolute -top-20 -right-20 w-80 h-80 text-rose-gold/5" />
-        <FloatingRing className="absolute bottom-20 right-40 w-24 h-24 text-gold/20 animate-[spin_20s_linear_infinite]" />
-        <SparkleDecor className="absolute top-32 right-1/3 w-4 h-4 text-gold/40 animate-sparkle" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-warm-white to-warm-white" />
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-soft-pink/15 rounded-full blur-[120px]" />
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage:
               "radial-gradient(circle, #4A0E4E 1px, transparent 1px)",
@@ -67,7 +62,7 @@ export default function Home() {
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div>
             <RevealSection>
               <p className="text-rose-gold font-medium mb-4 tracking-[0.2em] uppercase text-xs">
@@ -81,7 +76,7 @@ export default function Home() {
               </h1>
             </RevealSection>
             <RevealSection delay={200}>
-              <p className="text-lg md:text-xl text-warm-gray/80 leading-[1.8] mb-10 max-w-xl">
+              <p className="text-lg md:text-xl text-warm-gray leading-[1.8] mb-10 max-w-xl">
                 CEO and Co-Founder of Origami Owl. From a $350 investment to a
                 $250 million enterprise, championing youth empowerment and
                 philanthropy.
@@ -91,13 +86,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/about"
-                  className="shimmer-hover bg-gradient-to-r from-rose-gold to-rose-900 text-white px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 shadow-lg shadow-rose-gold/25 hover:shadow-xl hover:shadow-rose-gold/30 transition-shadow"
+                  className="shimmer-hover bg-deep-plum text-white px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 shadow-lg shadow-deep-plum/20 hover:shadow-xl transition-shadow"
                 >
                   Learn More <ArrowRight size={16} />
                 </Link>
                 <Link
                   href="/contact"
-                  className="glass text-deep-plum px-8 py-4 rounded-full font-medium hover:bg-white/80 transition-all inline-flex items-center justify-center"
+                  className="border-2 border-deep-plum/20 text-deep-plum px-8 py-4 rounded-full font-medium hover:bg-deep-plum hover:text-white transition-all inline-flex items-center justify-center"
                 >
                   Get in Touch
                 </Link>
@@ -105,32 +100,37 @@ export default function Home() {
             </RevealSection>
           </div>
 
-          <div className="hidden md:flex items-center justify-center">
-            <div className="relative w-80 h-80">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-gold/20 to-gold/20 animate-[pulse_4s_ease-in-out_infinite]" />
-              <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-soft-pink/40 to-warm-white glass" />
-              <div className="absolute inset-8 rounded-full bg-gradient-to-br from-deep-plum/10 to-rose-gold/10 flex items-center justify-center">
-                <Sparkles size={48} className="text-gold/60" />
+          <RevealSection direction="right" delay={200} className="hidden md:block">
+            <div className="relative">
+              <div className="rounded-3xl overflow-hidden shadow-2xl shadow-deep-plum/10">
+                <Image
+                  src="/chrissy-weems-banner.png"
+                  alt="Chrissy Weems"
+                  width={790}
+                  height={530}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
               </div>
             </div>
-          </div>
+          </RevealSection>
         </div>
 
         <WaveSeparator className="absolute bottom-0 left-0 w-full h-20 text-deep-plum" />
       </section>
 
       {/* Stats Section */}
-      <section className="relative bg-deep-plum pt-24 pb-16 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-plum-400/20 rounded-full blur-[100px]" />
+      <section className="relative bg-deep-plum pt-20 pb-20 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-plum-400/15 rounded-full blur-[80px]" />
         <div className="relative max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, i) => (
               <RevealSection key={stat.label} delay={i * 80}>
-                <div className="text-center group">
-                  <p className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2 transition-transform duration-300 group-hover:scale-110">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center group hover:bg-white/10 transition-colors">
+                  <p className="text-3xl md:text-4xl font-heading font-bold text-gold mb-2 transition-transform duration-300 group-hover:scale-105">
                     {stat.value}
                   </p>
-                  <p className="text-white/60 text-sm tracking-wide uppercase">
+                  <p className="text-white/50 text-sm tracking-wide">
                     {stat.label}
                   </p>
                 </div>
@@ -138,21 +138,20 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <DiagonalCut className="absolute bottom-0 left-0 w-full h-16 text-warm-white" />
       </section>
 
       {/* Story Section */}
-      <section className="relative py-28 bg-warm-white overflow-hidden">
-        <BlobShape className="absolute -left-40 top-10 w-[500px] h-[500px] text-soft-pink/10" />
+      <section className="relative py-28 bg-white overflow-hidden">
+        <BlobShape className="absolute -left-40 top-10 w-[400px] h-[400px] text-warm-white" />
 
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-[0.4fr_0.6fr] gap-16 items-center">
             <RevealSection direction="left">
               <div className="relative">
-                <span className="text-[12rem] font-heading text-rose-gold/10 leading-none select-none absolute -top-16 -left-4">
+                <span className="text-[12rem] font-heading text-deep-plum/5 leading-none select-none absolute -top-16 -left-4">
                   &ldquo;
                 </span>
-                <blockquote className="relative z-10 glass rounded-3xl p-10">
+                <blockquote className="relative z-10 bg-warm-white rounded-3xl p-10 border border-soft-pink/15">
                   <p className="text-xl md:text-2xl font-heading text-deep-plum italic leading-relaxed">
                     Pay it forward. Success in business should be passed on to
                     deserving organizations and the people around you.
@@ -166,8 +165,7 @@ export default function Home() {
 
             <RevealSection direction="right">
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-deep-plum mb-8 leading-tight">
-                A Story of Purpose{" "}
-                <span className="text-gradient">and Perseverance</span>
+                A Story of Purpose and Perseverance
               </h2>
               <p className="text-warm-gray leading-[1.8] text-lg">
                 What started as a way to help her 14-year-old daughter Bella earn
@@ -184,9 +182,7 @@ export default function Home() {
       </section>
 
       {/* Initiatives Section */}
-      <section className="relative py-28 bg-white overflow-hidden">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-rose-100/50 rounded-full blur-[100px]" />
-
+      <section className="relative py-28 bg-warm-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6">
           <RevealSection>
             <div className="text-center mb-16">
@@ -201,29 +197,27 @@ export default function Home() {
           </RevealSection>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Card 1: Force for Good - large, spans 2 cols */}
             <RevealSection delay={0} className="md:col-span-2">
-              <div className="bg-gradient-to-br from-deep-plum to-plum-800 rounded-3xl p-10 text-white relative overflow-hidden group h-full">
-                <BlobShape className="absolute -right-20 -bottom-20 w-60 h-60 text-plum-400/20 transition-transform duration-700 group-hover:scale-110" />
+              <div className="bg-deep-plum rounded-3xl p-10 text-white relative overflow-hidden group h-full">
+                <BlobShape className="absolute -right-20 -bottom-20 w-60 h-60 text-plum-400/10 transition-transform duration-700 group-hover:scale-110" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gold/20 rounded-2xl flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
                     <Heart size={28} className="text-gold" />
                   </div>
                   <h3 className="text-2xl font-heading font-bold mb-4">
                     {initiatives[0].title}
                   </h3>
-                  <p className="text-white/70 leading-[1.8] max-w-lg">
+                  <p className="text-white/60 leading-[1.8] max-w-lg">
                     {initiatives[0].description}
                   </p>
                 </div>
               </div>
             </RevealSection>
 
-            {/* Card 2: Owlette Program - standard glass */}
             <RevealSection delay={100}>
-              <div className="glass rounded-3xl p-8 group hover:shadow-xl transition-all duration-300 h-full">
-                <div className="w-12 h-12 bg-rose-gold/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-rose-gold/20 transition-colors">
-                  <Users size={24} className="text-rose-gold" />
+              <div className="bg-white rounded-3xl p-8 border border-soft-pink/15 group hover:shadow-lg transition-all duration-300 h-full">
+                <div className="w-12 h-12 bg-warm-white rounded-2xl flex items-center justify-center mb-5">
+                  <Users size={24} className="text-deep-plum" />
                 </div>
                 <h3 className="text-xl font-heading font-bold text-deep-plum mb-3">
                   {initiatives[1].title}
@@ -234,11 +228,10 @@ export default function Home() {
               </div>
             </RevealSection>
 
-            {/* Card 3: Bullyproof - accent border */}
             <RevealSection delay={150}>
-              <div className="rounded-3xl p-8 bg-warm-white border border-gold/20 hover:border-gold/40 transition-colors group h-full">
-                <div className="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center mb-5">
-                  <Sparkles size={24} className="text-gold" />
+              <div className="bg-white rounded-3xl p-8 border border-soft-pink/15 group hover:shadow-lg transition-all h-full">
+                <div className="w-12 h-12 bg-warm-white rounded-2xl flex items-center justify-center mb-5">
+                  <Sparkles size={24} className="text-deep-plum" />
                 </div>
                 <h3 className="text-xl font-heading font-bold text-deep-plum mb-3">
                   {initiatives[2].title}
@@ -249,11 +242,10 @@ export default function Home() {
               </div>
             </RevealSection>
 
-            {/* Card 4: Childhelp - large, spans 2 cols, gradient bg */}
             <RevealSection delay={200} className="md:col-span-2">
-              <div className="bg-gradient-to-r from-rose-gold/10 via-warm-white to-gold/10 rounded-3xl p-10 border border-rose-gold/10 h-full">
+              <div className="bg-white rounded-3xl p-10 border border-soft-pink/15 h-full">
                 <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 bg-deep-plum/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-14 h-14 bg-warm-white rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Award size={28} className="text-deep-plum" />
                   </div>
                   <div>
@@ -269,14 +261,10 @@ export default function Home() {
             </RevealSection>
           </div>
         </div>
-
-        <WaveSeparator className="absolute bottom-0 left-0 w-full h-16 text-warm-white" />
       </section>
 
       {/* Video Section */}
-      <section className="relative py-28 bg-warm-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-rose-100/30 to-transparent" />
-
+      <section className="relative py-28 bg-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6">
           <RevealSection>
             <div className="text-center mb-16">
@@ -292,9 +280,9 @@ export default function Home() {
           <div className="grid md:grid-cols-[1.3fr_0.7fr] gap-8 items-start">
             <RevealSection direction="left">
               <div className="group">
-                <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-deep-plum/10 ring-1 ring-rose-gold/10 group-hover:shadow-[0_25px_60px_-12px_rgba(74,14,78,0.15)] transition-shadow duration-500">
+                <div className="aspect-video rounded-2xl overflow-hidden shadow-xl shadow-black/5 ring-1 ring-black/5 group-hover:shadow-2xl transition-shadow duration-500">
                   <iframe
-                    src="https://www.youtube.com/embed/videoseries?list=PLMGMTw5RSTe1g-jjDKnW0TXrbnr_dMBJv"
+                    src="https://www.youtube.com/embed/FVs1Jk9Kcmg?controls=0&rel=0&modestbranding=1"
                     title="I Am Bullyproof Campaign"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -313,9 +301,9 @@ export default function Home() {
 
             <RevealSection direction="right" delay={150}>
               <div className="group md:mt-12">
-                <div className="aspect-video rounded-3xl overflow-hidden shadow-xl shadow-deep-plum/10 ring-1 ring-rose-gold/10 group-hover:shadow-[0_25px_60px_-12px_rgba(74,14,78,0.15)] transition-shadow duration-500">
+                <div className="aspect-video rounded-2xl overflow-hidden shadow-xl shadow-black/5 ring-1 ring-black/5 group-hover:shadow-2xl transition-shadow duration-500">
                   <iframe
-                    src="https://www.youtube.com/embed/videoseries?list=PLMGMTw5RSTe0gtt4mRvqxXJjfwJOkf9f7"
+                    src="https://www.youtube.com/embed/zLuV6cFMl9o?controls=0&rel=0&modestbranding=1"
                     title="Origami Owl + Childhelp Partnership"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -337,19 +325,16 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="relative py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-deep-plum via-plum-800 to-rose-900" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose-gold/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gold/10 rounded-full blur-[80px]" />
-        <SparkleDecor className="absolute top-16 left-[15%] w-3 h-3 text-gold/30 animate-sparkle" />
-        <SparkleDecor className="absolute bottom-20 right-[20%] w-5 h-5 text-rose-gold/20" />
-        <FloatingRing className="absolute top-10 right-[10%] w-32 h-32 text-white/5" />
+        <div className="absolute inset-0 bg-deep-plum" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-plum-400/10 rounded-full blur-[100px]" />
+        <SparkleDecor className="absolute top-16 left-[15%] w-3 h-3 text-gold/20" />
 
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <RevealSection>
             <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 leading-tight">
               Ready to Connect?
             </h2>
-            <p className="text-white/70 mb-10 max-w-xl mx-auto text-lg leading-[1.8]">
+            <p className="text-white/60 mb-10 max-w-xl mx-auto text-lg leading-[1.8]">
               Whether you are interested in collaboration, speaking engagements,
               or learning more about Chrissy&apos;s work, reach out today.
             </p>

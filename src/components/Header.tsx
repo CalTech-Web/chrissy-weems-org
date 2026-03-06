@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="h-[2px] bg-gradient-to-r from-rose-gold via-gold to-rose-gold" />
+      <div className="h-[2px] bg-gradient-to-r from-deep-plum/20 via-rose-gold/40 to-deep-plum/20" />
       <header
         className={`sticky top-0 z-50 transition-all duration-300 border-b ${
           scrolled
@@ -61,14 +61,14 @@ export default function Header() {
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-rose-gold to-gold rounded-full" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-deep-plum rounded-full" />
                   )}
                 </Link>
               );
             })}
             <Link
               href="/contact"
-              className="shimmer-hover bg-gradient-to-r from-rose-gold to-rose-900 text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-md shadow-rose-gold/20 hover:shadow-lg hover:shadow-rose-gold/30 transition-shadow"
+              className="bg-deep-plum text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-deep-plum/90 transition-colors"
             >
               Get in Touch
             </Link>
@@ -110,7 +110,7 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="block mt-2 bg-gradient-to-r from-rose-gold to-rose-900 text-white px-5 py-2.5 rounded-full text-sm font-medium text-center"
+              className="block mt-2 bg-deep-plum text-white px-5 py-2.5 rounded-full text-sm font-medium text-center"
             >
               Get in Touch
             </Link>

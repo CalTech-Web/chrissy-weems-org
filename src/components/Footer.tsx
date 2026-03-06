@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Heart } from "lucide-react";
-import { WaveSeparator, BlobShape, SparkleDecor } from "./DecorativeShapes";
+import { BlobShape, SparkleDecor } from "./DecorativeShapes";
 
 const footerLinks = [
   { href: "/", label: "Home" },
@@ -14,7 +13,6 @@ const footerLinks = [
 export default function Footer() {
   return (
     <>
-      <WaveSeparator className="text-deep-plum w-full h-16 -mb-1 block" />
       <footer className="relative bg-gradient-to-b from-deep-plum to-plum-900 text-white overflow-hidden">
         <BlobShape className="absolute -right-32 -top-20 w-80 h-80 text-plum-400/5" />
         <SparkleDecor className="absolute left-[10%] top-12 w-3 h-3 text-gold/20" />
@@ -73,8 +71,16 @@ export default function Footer() {
             <p className="text-white/40 text-xs">
               Copyright Chrissy Weems 2018 - 2026. All Rights Reserved.
             </p>
-            <p className="text-white/40 text-xs flex items-center gap-1">
-              Made with <Heart size={12} className="text-rose-gold" /> in Arizona
+            <p className="text-white/40 text-xs">
+              Built by{" "}
+              <a
+                href="https://caltechweb.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-gold transition-colors"
+              >
+                CalTech Web
+              </a>
             </p>
           </div>
         </div>

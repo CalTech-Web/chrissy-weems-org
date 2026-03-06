@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, GraduationCap, Briefcase, Heart, Users } from "lucide-react";
+import {
+  ArrowRight,
+  GraduationCap,
+  Briefcase,
+  Heart,
+  Users,
+} from "lucide-react";
+import { BlobShape, SparkleDecor } from "@/components/DecorativeShapes";
+import RevealSection from "@/components/RevealSection";
 
 export const metadata: Metadata = {
   title: "About Chrissy Weems | CEO & Co-Founder of Origami Owl",
@@ -41,37 +49,77 @@ const milestones = [
   },
 ];
 
+const sidebarCards = [
+  {
+    icon: GraduationCap,
+    title: "Education",
+    text: "Arizona State University, Fine Arts",
+    accent: "border-l-gold",
+    iconColor: "text-gold",
+    bg: "bg-gold/5",
+  },
+  {
+    icon: Briefcase,
+    title: "Role",
+    text: "CEO & Co-Founder, Origami Owl (since July 2017)",
+    accent: "border-l-rose-gold",
+    iconColor: "text-rose-gold",
+    bg: "bg-rose-gold/5",
+  },
+  {
+    icon: Heart,
+    title: "Philanthropy",
+    text: "Force for Good initiative, $1.15M donated to charity. Partners with 12+ charitable organizations across Arizona.",
+    accent: "border-l-deep-plum",
+    iconColor: "text-deep-plum",
+    bg: "bg-deep-plum/5",
+  },
+  {
+    icon: Users,
+    title: "Family",
+    text: "Married 25+ years. Mother of five children, including Origami Owl co-founder Bella Weems.",
+    accent: "border-l-soft-pink",
+    iconColor: "text-rose-gold",
+    bg: "bg-soft-pink/10",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-warm-white py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <p className="text-rose-gold font-medium mb-4 tracking-wide uppercase text-sm">
+      <section className="relative bg-gradient-to-br from-cream via-warm-white to-rose-100 py-24 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-soft-pink/20 rounded-full blur-[100px]" />
+        <SparkleDecor className="absolute top-20 right-[20%] w-4 h-4 text-gold/30 animate-sparkle" />
+        <BlobShape className="absolute -bottom-20 -left-20 w-60 h-60 text-rose-gold/5" />
+
+        <div className="relative max-w-7xl mx-auto px-6">
+          <RevealSection>
+            <p className="text-rose-gold font-medium mb-4 tracking-[0.2em] uppercase text-xs">
               About
             </p>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-deep-plum leading-tight mb-6">
-              Meet Chrissy Weems
+            <h1 className="text-5xl md:text-7xl font-heading font-bold text-deep-plum leading-[1.1] mb-6">
+              Meet <span className="text-gradient">Chrissy Weems</span>
             </h1>
-            <p className="text-lg text-warm-gray leading-relaxed">
+            <p className="text-lg md:text-xl text-warm-gray/80 leading-[1.8] max-w-2xl">
               A stay-at-home mother turned CEO of a $250 million company.
-              Chrissy Weems is proof that purpose, family, and perseverance can
-              build something extraordinary.
+              Proof that purpose, family, and perseverance can build something
+              extraordinary.
             </p>
-          </div>
+          </RevealSection>
         </div>
       </section>
 
       {/* Bio Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl font-heading font-bold text-deep-plum mb-6">
-                The Story Behind the Success
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-[1.4fr_0.6fr] gap-16 items-start">
+            <RevealSection direction="left">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-deep-plum mb-8">
+                The Story Behind{" "}
+                <span className="text-gradient">the Success</span>
               </h2>
-              <div className="space-y-4 text-warm-gray leading-relaxed">
+              <div className="space-y-5 text-warm-gray leading-[1.8] text-lg">
                 <p>
                   Chrissy Weems never set out to build a multi-million dollar
                   company. As a stay-at-home mother of five, her world revolved
@@ -80,12 +128,12 @@ export default function AboutPage() {
                   car.
                 </p>
                 <p>
-                  Bella had saved $350 from babysitting. Chrissy pledged to match
-                  it, and together they channeled their shared love of crafting
-                  into something neither could have imagined. They created
-                  "living lockets," clear jewelry pieces that could be filled
-                  with tiny charms and personal memorabilia, each one telling a
-                  unique story.
+                  Bella had saved $350 from babysitting. Chrissy pledged to
+                  match it, and together they channeled their shared love of
+                  crafting into something neither could have imagined. They
+                  created &ldquo;living lockets,&rdquo; clear jewelry pieces
+                  that could be filled with tiny charms and personal
+                  memorabilia, each one telling a unique story.
                 </p>
                 <p>
                   Starting from a small rented space in an Arizona mall, the
@@ -101,103 +149,116 @@ export default function AboutPage() {
                   University.
                 </p>
               </div>
-            </div>
+            </RevealSection>
 
-            <div className="space-y-6">
-              <div className="bg-warm-white rounded-2xl p-6 border border-soft-pink/20">
-                <div className="flex items-center gap-3 mb-3">
-                  <GraduationCap size={20} className="text-rose-gold" />
-                  <h3 className="font-semibold text-deep-plum">Education</h3>
-                </div>
-                <p className="text-warm-gray text-sm">
-                  Arizona State University, Fine Arts
-                </p>
+            <RevealSection direction="right">
+              <div className="space-y-5">
+                {sidebarCards.map((card) => (
+                  <div
+                    key={card.title}
+                    className={`glass rounded-2xl p-6 border-l-4 ${card.accent}`}
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`w-8 h-8 ${card.bg} rounded-lg flex items-center justify-center`}>
+                        <card.icon size={16} className={card.iconColor} />
+                      </div>
+                      <h3 className="font-semibold text-deep-plum">
+                        {card.title}
+                      </h3>
+                    </div>
+                    <p className="text-warm-gray text-sm leading-[1.7]">
+                      {card.text}
+                    </p>
+                  </div>
+                ))}
               </div>
-
-              <div className="bg-warm-white rounded-2xl p-6 border border-soft-pink/20">
-                <div className="flex items-center gap-3 mb-3">
-                  <Briefcase size={20} className="text-rose-gold" />
-                  <h3 className="font-semibold text-deep-plum">Role</h3>
-                </div>
-                <p className="text-warm-gray text-sm">
-                  CEO & Co-Founder, Origami Owl (since July 2017)
-                </p>
-              </div>
-
-              <div className="bg-warm-white rounded-2xl p-6 border border-soft-pink/20">
-                <div className="flex items-center gap-3 mb-3">
-                  <Heart size={20} className="text-rose-gold" />
-                  <h3 className="font-semibold text-deep-plum">Philanthropy</h3>
-                </div>
-                <p className="text-warm-gray text-sm">
-                  Force for Good initiative, $1.15M donated to charity. Partners
-                  with 12+ charitable organizations across Arizona.
-                </p>
-              </div>
-
-              <div className="bg-warm-white rounded-2xl p-6 border border-soft-pink/20">
-                <div className="flex items-center gap-3 mb-3">
-                  <Users size={20} className="text-rose-gold" />
-                  <h3 className="font-semibold text-deep-plum">Family</h3>
-                </div>
-                <p className="text-warm-gray text-sm">
-                  Married 25+ years. Mother of five children, including
-                  Origami Owl co-founder Bella Weems.
-                </p>
-              </div>
-            </div>
+            </RevealSection>
           </div>
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="py-20 bg-warm-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-heading font-bold text-deep-plum mb-12 text-center">
-            Key Milestones
-          </h2>
+      <section className="relative py-28 bg-warm-white overflow-hidden">
+        <BlobShape className="absolute -right-32 top-20 w-[400px] h-[400px] text-soft-pink/10" />
 
-          <div className="space-y-8">
-            {milestones.map((milestone) => (
-              <div
+        <div className="relative max-w-5xl mx-auto px-6">
+          <RevealSection>
+            <div className="text-center mb-16">
+              <p className="text-rose-gold font-medium tracking-[0.2em] uppercase text-xs mb-4">
+                Journey
+              </p>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-deep-plum">
+                Key Milestones
+              </h2>
+              <div className="w-16 h-[2px] bg-gradient-to-r from-rose-gold to-gold mx-auto mt-6" />
+            </div>
+          </RevealSection>
+
+          <div className="relative">
+            {/* Vertical gradient line */}
+            <div className="absolute left-8 md:left-1/2 md:-translate-x-[1px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-rose-gold via-gold to-deep-plum" />
+
+            {milestones.map((milestone, i) => (
+              <RevealSection
                 key={milestone.year}
-                className="flex gap-6 items-start"
+                direction={i % 2 === 0 ? "left" : "right"}
+                delay={i * 80}
               >
-                <div className="flex-shrink-0 w-16 h-16 bg-rose-gold rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">
-                    {milestone.year}
-                  </span>
+                <div
+                  className={`relative flex items-start gap-8 mb-16 ${
+                    i % 2 === 0
+                      ? "md:flex-row"
+                      : "md:flex-row-reverse"
+                  } md:gap-16`}
+                >
+                  {/* Content card */}
+                  <div className="flex-1 ml-20 md:ml-0 glass rounded-2xl p-8">
+                    <h3 className="font-heading font-bold text-deep-plum text-xl mb-2">
+                      {milestone.title}
+                    </h3>
+                    <p className="text-warm-gray text-sm leading-[1.8]">
+                      {milestone.description}
+                    </p>
+                  </div>
+
+                  {/* Year bubble */}
+                  <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-rose-gold to-gold rounded-full flex items-center justify-center shadow-lg shadow-rose-gold/30 z-10">
+                    <span className="text-white font-bold text-sm">
+                      {milestone.year}
+                    </span>
+                  </div>
+
+                  {/* Spacer for alternating */}
+                  <div className="flex-1 hidden md:block" />
                 </div>
-                <div className="pt-2">
-                  <h3 className="font-heading font-bold text-deep-plum text-lg mb-2">
-                    {milestone.title}
-                  </h3>
-                  <p className="text-warm-gray text-sm leading-relaxed">
-                    {milestone.description}
-                  </p>
-                </div>
-              </div>
+              </RevealSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-deep-plum">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-heading font-bold text-white mb-4">
-            Want to Connect with Chrissy?
-          </h2>
-          <p className="text-white/70 mb-8">
-            Reach out for speaking engagements, collaborations, or to learn
-            more.
-          </p>
-          <Link
-            href="/contact"
-            className="bg-gold text-deep-plum px-8 py-3 rounded-full font-semibold hover:bg-white transition-colors inline-flex items-center gap-2"
-          >
-            Contact <ArrowRight size={16} />
-          </Link>
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-deep-plum via-plum-800 to-rose-900" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-rose-gold/10 rounded-full blur-[100px]" />
+        <SparkleDecor className="absolute top-12 left-[15%] w-3 h-3 text-gold/30" />
+
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <RevealSection>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
+              Want to Connect with Chrissy?
+            </h2>
+            <p className="text-white/70 mb-10 text-lg">
+              Reach out for speaking engagements, collaborations, or to learn
+              more.
+            </p>
+            <Link
+              href="/contact"
+              className="shimmer-hover bg-gold text-deep-plum px-10 py-4 rounded-full font-semibold hover:bg-white transition-colors inline-flex items-center gap-2 shadow-lg shadow-gold/20 text-lg"
+            >
+              Contact <ArrowRight size={18} />
+            </Link>
+          </RevealSection>
         </div>
       </section>
     </>

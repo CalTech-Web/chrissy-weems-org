@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Heart, Users, Sparkles, Award } from "lucide-react";
+import {
+  BlobShape,
+  FloatingRing,
+  SparkleDecor,
+  WaveSeparator,
+  DiagonalCut,
+} from "@/components/DecorativeShapes";
+import RevealSection from "@/components/RevealSection";
 
 const initiatives = [
   {
@@ -7,24 +15,28 @@ const initiatives = [
     title: "Force for Good",
     description:
       "Origami Owl's philanthropic venture has donated over $1.15 million to charitable causes, supporting children's welfare, academic opportunities, and women's empowerment.",
+    featured: true,
   },
   {
     icon: Users,
     title: "Owlette Program",
     description:
       "A youth entrepreneurship program for ages 11 to 17, helping young people sharpen leadership skills and build confidence alongside their parents.",
+    featured: false,
   },
   {
     icon: Sparkles,
     title: "I Am Bullyproof",
     description:
       "An anti-bullying campaign raising awareness and providing resources to help children and families stand against childhood bullying.",
+    featured: false,
   },
   {
     icon: Award,
     title: "Childhelp Partnership",
     description:
       "Origami Owl partners with Childhelp to save children's lives through awareness campaigns and special collections that benefit child welfare.",
+    featured: true,
   },
 ];
 
@@ -39,185 +51,315 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-warm-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-soft-pink/20 via-transparent to-rose-gold/10" />
-        <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
-          <div className="max-w-3xl">
-            <p className="text-rose-gold font-medium mb-4 tracking-wide uppercase text-sm">
-              Entrepreneur. Philanthropist. Advocate.
-            </p>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-deep-plum leading-tight mb-6">
-              Inspiring Change,{" "}
-              <span className="text-rose-gold">One Life at a Time</span>
-            </h1>
-            <p className="text-lg text-warm-gray leading-relaxed mb-8 max-w-2xl">
-              Chrissy Weems is the CEO and Co-Founder of Origami Owl, a company
-              she built from a $350 investment into a $250 million enterprise.
-              Her mission goes beyond business, championing youth empowerment,
-              philanthropy, and anti-bullying advocacy.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/about"
-                className="bg-rose-gold text-white px-8 py-3 rounded-full font-medium hover:bg-deep-plum transition-colors inline-flex items-center justify-center gap-2"
-              >
-                Learn More <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="/contact"
-                className="border-2 border-deep-plum text-deep-plum px-8 py-3 rounded-full font-medium hover:bg-deep-plum hover:text-white transition-colors inline-flex items-center justify-center"
-              >
-                Get in Touch
-              </Link>
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream via-warm-white to-rose-100" />
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-soft-pink/30 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/10 rounded-full blur-[100px]" />
+        <BlobShape className="absolute -top-20 -right-20 w-80 h-80 text-rose-gold/5" />
+        <FloatingRing className="absolute bottom-20 right-40 w-24 h-24 text-gold/20 animate-[spin_20s_linear_infinite]" />
+        <SparkleDecor className="absolute top-32 right-1/3 w-4 h-4 text-gold/40 animate-sparkle" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #4A0E4E 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+          <div>
+            <RevealSection>
+              <p className="text-rose-gold font-medium mb-4 tracking-[0.2em] uppercase text-xs">
+                Entrepreneur &middot; Philanthropist &middot; Advocate
+              </p>
+            </RevealSection>
+            <RevealSection delay={100}>
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-deep-plum leading-[1.1] mb-6">
+                Inspiring Change,{" "}
+                <span className="text-gradient">One Life at a Time</span>
+              </h1>
+            </RevealSection>
+            <RevealSection delay={200}>
+              <p className="text-lg md:text-xl text-warm-gray/80 leading-[1.8] mb-10 max-w-xl">
+                CEO and Co-Founder of Origami Owl. From a $350 investment to a
+                $250 million enterprise, championing youth empowerment and
+                philanthropy.
+              </p>
+            </RevealSection>
+            <RevealSection delay={300}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/about"
+                  className="shimmer-hover bg-gradient-to-r from-rose-gold to-rose-900 text-white px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 shadow-lg shadow-rose-gold/25 hover:shadow-xl hover:shadow-rose-gold/30 transition-shadow"
+                >
+                  Learn More <ArrowRight size={16} />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="glass text-deep-plum px-8 py-4 rounded-full font-medium hover:bg-white/80 transition-all inline-flex items-center justify-center"
+                >
+                  Get in Touch
+                </Link>
+              </div>
+            </RevealSection>
+          </div>
+
+          <div className="hidden md:flex items-center justify-center">
+            <div className="relative w-80 h-80">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-gold/20 to-gold/20 animate-[pulse_4s_ease-in-out_infinite]" />
+              <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-soft-pink/40 to-warm-white glass" />
+              <div className="absolute inset-8 rounded-full bg-gradient-to-br from-deep-plum/10 to-rose-gold/10 flex items-center justify-center">
+                <Sparkles size={48} className="text-gold/60" />
+              </div>
             </div>
           </div>
         </div>
+
+        <WaveSeparator className="absolute bottom-0 left-0 w-full h-20 text-deep-plum" />
       </section>
 
       {/* Stats Section */}
-      <section className="bg-deep-plum py-16">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="relative bg-deep-plum pt-24 pb-16 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-plum-400/20 rounded-full blur-[100px]" />
+        <div className="relative max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-3xl md:text-4xl font-heading font-bold text-gold mb-2">
-                  {stat.value}
-                </p>
-                <p className="text-white/70 text-sm">{stat.label}</p>
-              </div>
+            {stats.map((stat, i) => (
+              <RevealSection key={stat.label} delay={i * 80}>
+                <div className="text-center group">
+                  <p className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2 transition-transform duration-300 group-hover:scale-110">
+                    {stat.value}
+                  </p>
+                  <p className="text-white/60 text-sm tracking-wide uppercase">
+                    {stat.label}
+                  </p>
+                </div>
+              </RevealSection>
             ))}
           </div>
         </div>
+        <DiagonalCut className="absolute bottom-0 left-0 w-full h-16 text-warm-white" />
       </section>
 
       {/* Story Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-deep-plum mb-6">
-              A Story of Purpose and Perseverance
-            </h2>
-            <p className="text-warm-gray leading-relaxed">
-              What started as a way to help her 14-year-old daughter Bella earn
-              money for a car became one of the most successful direct sales
-              companies in the country. Chrissy matched Bella&apos;s $350 in
-              babysitting savings, and together they created &ldquo;living lockets,&rdquo;
-              clear jewelry pieces filled with charms and memories. From a rented
-              mall space in Arizona, Origami Owl grew to a $250 million company
-              with over 600 sales professionals.
-            </p>
-          </div>
+      <section className="relative py-28 bg-warm-white overflow-hidden">
+        <BlobShape className="absolute -left-40 top-10 w-[500px] h-[500px] text-soft-pink/10" />
 
-          <div className="bg-warm-white rounded-2xl p-8 md:p-12 border border-soft-pink/30">
-            <blockquote className="text-center">
-              <p className="text-xl md:text-2xl font-heading text-deep-plum italic leading-relaxed">
-                &ldquo;Pay it forward. Success in business should be passed on
-                to deserving organizations and the people around you.&rdquo;
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-[0.4fr_0.6fr] gap-16 items-center">
+            <RevealSection direction="left">
+              <div className="relative">
+                <span className="text-[12rem] font-heading text-rose-gold/10 leading-none select-none absolute -top-16 -left-4">
+                  &ldquo;
+                </span>
+                <blockquote className="relative z-10 glass rounded-3xl p-10">
+                  <p className="text-xl md:text-2xl font-heading text-deep-plum italic leading-relaxed">
+                    Pay it forward. Success in business should be passed on to
+                    deserving organizations and the people around you.
+                  </p>
+                  <cite className="block mt-6 text-rose-gold font-medium not-italic text-sm tracking-wide">
+                    Chrissy Weems
+                  </cite>
+                </blockquote>
+              </div>
+            </RevealSection>
+
+            <RevealSection direction="right">
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-deep-plum mb-8 leading-tight">
+                A Story of Purpose{" "}
+                <span className="text-gradient">and Perseverance</span>
+              </h2>
+              <p className="text-warm-gray leading-[1.8] text-lg">
+                What started as a way to help her 14-year-old daughter Bella earn
+                money for a car became one of the most successful direct sales
+                companies in the country. Chrissy matched Bella&apos;s $350 in
+                babysitting savings, and together they created &ldquo;living
+                lockets,&rdquo; clear jewelry pieces filled with charms and
+                memories. From a rented mall space in Arizona, Origami Owl grew
+                to a $250 million company with over 600 sales professionals.
               </p>
-              <cite className="block mt-6 text-rose-gold font-medium not-italic">
-                Chrissy Weems
-              </cite>
-            </blockquote>
+            </RevealSection>
           </div>
         </div>
       </section>
 
       {/* Initiatives Section */}
-      <section className="py-20 bg-warm-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-deep-plum mb-4">
-              Making a Difference
-            </h2>
-            <p className="text-warm-gray max-w-2xl mx-auto">
-              Through Origami Owl and personal advocacy, Chrissy champions
-              causes close to her heart.
-            </p>
-          </div>
+      <section className="relative py-28 bg-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-rose-100/50 rounded-full blur-[100px]" />
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {initiatives.map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-2xl p-8 border border-soft-pink/20 hover:shadow-lg transition-shadow"
-              >
-                <div className="w-12 h-12 bg-rose-gold/10 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon size={24} className="text-rose-gold" />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <RevealSection>
+            <div className="text-center mb-16">
+              <p className="text-rose-gold font-medium tracking-[0.2em] uppercase text-xs mb-4">
+                Philanthropy & Advocacy
+              </p>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-deep-plum mb-4">
+                Making a Difference
+              </h2>
+              <div className="w-16 h-[2px] bg-gradient-to-r from-rose-gold to-gold mx-auto mt-6" />
+            </div>
+          </RevealSection>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Card 1: Force for Good - large, spans 2 cols */}
+            <RevealSection delay={0} className="md:col-span-2">
+              <div className="bg-gradient-to-br from-deep-plum to-plum-800 rounded-3xl p-10 text-white relative overflow-hidden group h-full">
+                <BlobShape className="absolute -right-20 -bottom-20 w-60 h-60 text-plum-400/20 transition-transform duration-700 group-hover:scale-110" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-gold/20 rounded-2xl flex items-center justify-center mb-6">
+                    <Heart size={28} className="text-gold" />
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold mb-4">
+                    {initiatives[0].title}
+                  </h3>
+                  <p className="text-white/70 leading-[1.8] max-w-lg">
+                    {initiatives[0].description}
+                  </p>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* Card 2: Owlette Program - standard glass */}
+            <RevealSection delay={100}>
+              <div className="glass rounded-3xl p-8 group hover:shadow-xl transition-all duration-300 h-full">
+                <div className="w-12 h-12 bg-rose-gold/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-rose-gold/20 transition-colors">
+                  <Users size={24} className="text-rose-gold" />
                 </div>
                 <h3 className="text-xl font-heading font-bold text-deep-plum mb-3">
-                  {item.title}
+                  {initiatives[1].title}
                 </h3>
-                <p className="text-warm-gray text-sm leading-relaxed">
-                  {item.description}
+                <p className="text-warm-gray text-sm leading-[1.8]">
+                  {initiatives[1].description}
                 </p>
               </div>
-            ))}
+            </RevealSection>
+
+            {/* Card 3: Bullyproof - accent border */}
+            <RevealSection delay={150}>
+              <div className="rounded-3xl p-8 bg-warm-white border border-gold/20 hover:border-gold/40 transition-colors group h-full">
+                <div className="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center mb-5">
+                  <Sparkles size={24} className="text-gold" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-deep-plum mb-3">
+                  {initiatives[2].title}
+                </h3>
+                <p className="text-warm-gray text-sm leading-[1.8]">
+                  {initiatives[2].description}
+                </p>
+              </div>
+            </RevealSection>
+
+            {/* Card 4: Childhelp - large, spans 2 cols, gradient bg */}
+            <RevealSection delay={200} className="md:col-span-2">
+              <div className="bg-gradient-to-r from-rose-gold/10 via-warm-white to-gold/10 rounded-3xl p-10 border border-rose-gold/10 h-full">
+                <div className="flex items-start gap-6">
+                  <div className="w-14 h-14 bg-deep-plum/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Award size={28} className="text-deep-plum" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-heading font-bold text-deep-plum mb-3">
+                      {initiatives[3].title}
+                    </h3>
+                    <p className="text-warm-gray leading-[1.8]">
+                      {initiatives[3].description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </RevealSection>
           </div>
         </div>
+
+        <WaveSeparator className="absolute bottom-0 left-0 w-full h-16 text-warm-white" />
       </section>
 
       {/* Video Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-deep-plum mb-4">
-              Watch and Be Inspired
-            </h2>
-            <p className="text-warm-gray max-w-2xl mx-auto">
-              Learn more about Chrissy&apos;s journey, advocacy work, and the
-              Origami Owl story.
-            </p>
-          </div>
+      <section className="relative py-28 bg-warm-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-rose-100/30 to-transparent" />
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-lg">
-                <iframe
-                  src="https://www.youtube.com/embed/videoseries?list=PLMGMTw5RSTe1g-jjDKnW0TXrbnr_dMBJv"
-                  title="I Am Bullyproof Campaign"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-              <h3 className="mt-4 font-heading font-bold text-deep-plum text-lg">
-                I Am Bullyproof Campaign
-              </h3>
+        <div className="relative max-w-7xl mx-auto px-6">
+          <RevealSection>
+            <div className="text-center mb-16">
+              <p className="text-rose-gold font-medium tracking-[0.2em] uppercase text-xs mb-4">
+                Featured Content
+              </p>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-deep-plum">
+                Watch and Be Inspired
+              </h2>
             </div>
-            <div>
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-lg">
-                <iframe
-                  src="https://www.youtube.com/embed/videoseries?list=PLMGMTw5RSTe0gtt4mRvqxXJjfwJOkf9f7"
-                  title="Origami Owl + Childhelp Partnership"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
+          </RevealSection>
+
+          <div className="grid md:grid-cols-[1.3fr_0.7fr] gap-8 items-start">
+            <RevealSection direction="left">
+              <div className="group">
+                <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-deep-plum/10 ring-1 ring-rose-gold/10 group-hover:shadow-[0_25px_60px_-12px_rgba(74,14,78,0.15)] transition-shadow duration-500">
+                  <iframe
+                    src="https://www.youtube.com/embed/videoseries?list=PLMGMTw5RSTe1g-jjDKnW0TXrbnr_dMBJv"
+                    title="I Am Bullyproof Campaign"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+                <h3 className="mt-6 font-heading font-bold text-deep-plum text-xl">
+                  I Am Bullyproof Campaign
+                </h3>
+                <p className="text-warm-gray text-sm mt-2">
+                  Watch the powerful anti-bullying awareness series created by
+                  Origami Owl.
+                </p>
               </div>
-              <h3 className="mt-4 font-heading font-bold text-deep-plum text-lg">
-                Origami Owl + Childhelp: Partnering to Save Lives
-              </h3>
-            </div>
+            </RevealSection>
+
+            <RevealSection direction="right" delay={150}>
+              <div className="group md:mt-12">
+                <div className="aspect-video rounded-3xl overflow-hidden shadow-xl shadow-deep-plum/10 ring-1 ring-rose-gold/10 group-hover:shadow-[0_25px_60px_-12px_rgba(74,14,78,0.15)] transition-shadow duration-500">
+                  <iframe
+                    src="https://www.youtube.com/embed/videoseries?list=PLMGMTw5RSTe0gtt4mRvqxXJjfwJOkf9f7"
+                    title="Origami Owl + Childhelp Partnership"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+                <h3 className="mt-6 font-heading font-bold text-deep-plum text-lg">
+                  Origami Owl + Childhelp
+                </h3>
+                <p className="text-warm-gray text-sm mt-2">
+                  Partnering to save children&apos;s lives through awareness and
+                  action.
+                </p>
+              </div>
+            </RevealSection>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-deep-plum to-rose-gold">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
-            Ready to Connect?
-          </h2>
-          <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Whether you are interested in collaboration, speaking engagements,
-            or learning more about Chrissy&apos;s work, reach out today.
-          </p>
-          <Link
-            href="/contact"
-            className="bg-white text-deep-plum px-8 py-3 rounded-full font-semibold hover:bg-gold hover:text-deep-plum transition-colors inline-flex items-center gap-2"
-          >
-            Contact Chrissy <ArrowRight size={16} />
-          </Link>
+      <section className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-deep-plum via-plum-800 to-rose-900" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose-gold/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gold/10 rounded-full blur-[80px]" />
+        <SparkleDecor className="absolute top-16 left-[15%] w-3 h-3 text-gold/30 animate-sparkle" />
+        <SparkleDecor className="absolute bottom-20 right-[20%] w-5 h-5 text-rose-gold/20" />
+        <FloatingRing className="absolute top-10 right-[10%] w-32 h-32 text-white/5" />
+
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <RevealSection>
+            <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 leading-tight">
+              Ready to Connect?
+            </h2>
+            <p className="text-white/70 mb-10 max-w-xl mx-auto text-lg leading-[1.8]">
+              Whether you are interested in collaboration, speaking engagements,
+              or learning more about Chrissy&apos;s work, reach out today.
+            </p>
+            <Link
+              href="/contact"
+              className="shimmer-hover bg-white text-deep-plum px-10 py-4 rounded-full font-semibold hover:bg-gold transition-colors inline-flex items-center gap-3 shadow-lg shadow-black/20 text-lg"
+            >
+              Contact Chrissy <ArrowRight size={18} />
+            </Link>
+          </RevealSection>
         </div>
       </section>
     </>

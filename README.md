@@ -1,15 +1,13 @@
-# chrissy-weems-org
+# ChrissyWeems.org
 
-Tech stack: Next.js, TypeScript, Tailwind CSS, Vercel
+Next.js 16, React 19, TypeScript, Tailwind CSS 4
+Deployed on Vercel: https://chrissy-weems-org.vercel.app
+Production: https://chrissyweems.org
+Local dev: http://localhost:3000
 
-Website: https://chrissy-weems-org.vercel.app
+## Run Agents
 
-## Agents
-
-WORK=~/ctw/chrissy-weems-org/agents/design-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/ctw/saif/ENGINE/run.sh
-
-WORK=~/ctw/chrissy-weems-org/agents/content-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/ctw/saif/ENGINE/run.sh
-
-WORK=~/ctw/chrissy-weems-org/agents/seo-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/ctw/saif/ENGINE/run.sh
-
-WORK=~/ctw/chrissy-weems-org/agents/pagespeed-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/ctw/saif/ENGINE/run.sh
+WORK=/Users/brandonhopkins/Projects/chrissy-weems-org/agents/content-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/Projects/claude-lab/ENGINE/run.sh
+WORK=/Users/brandonhopkins/Projects/chrissy-weems-org/agents/design-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/Projects/claude-lab/ENGINE/run.sh
+WORK=/Users/brandonhopkins/Projects/chrissy-weems-org/agents/pagespeed-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/Projects/claude-lab/ENGINE/run.sh
+WORK=/Users/brandonhopkins/Projects/chrissy-weems-org/agents/seo-agent MODEL="sonnet" MAX_LOOPS=5 bash ~/Projects/claude-lab/ENGINE/run.sh
